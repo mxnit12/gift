@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Awesome Diary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Raleway', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #1a1a1a;
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
+  }
+  .container {
+    opacity: 1;
+    transition: opacity 0.5s; 
+}
+  .button {
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    margin: 20px;
+    width: 150px;
+    background-color: #cc891e;
+    color: #ffffff;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  .button:hover {
+    transform: scale(1.1);
+    background-color: #b2ac88;
+  }
+  .quote-container {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    margin: 50px;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .quote {
+    font-family: 'Raleway', sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+  }
+  .refresh-message {
+    margin-top: 30px;
+    color: #ffffff;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+</style>
+</head>
+<body>
+
+<!-- Home Content -->
+<div class="container">
+  <h1>Welcome to your surprise</h1>
+  <button class="button" onclick="askQuestion1()">Start</button>
+</div>
+
+<audio id="background-music" loop>
+  <source src="photograph.mp3" type="audio/mpeg">
+</audio>
+
+<!-- JavaScript -->
+<script>
+  function askQuestion1() {
+    document.querySelector('.container').style.opacity = '0';
+    setTimeout(function(){
+      document.querySelector('.container').innerHTML = `
+        <h1>Did you read the diary?</h1>
+        <button class="button yes" onclick="askQuestion2()">Yes</button>
+        <button class="button no" onclick="showQuote1()">No</button>
+      `;
+      document.querySelector('.container').style.opacity = '1';
+    }, 500);
+    var audio = document.getElementById("background-music");
+    audio.volume = 0.2;
+    audio.play();
+  }
+
+  function askQuestion2() {
+    document.querySelector('.container').style.opacity = '0';
+    setTimeout(function(){
+      document.querySelector('.container').innerHTML = `
+        <h1>OMG! I can't believe this, you read it fr?</h1>
+        <p>(next page contains something that you well and truly deserve💌)</p>
+        <button class="button yes" onclick="showQuote2()">Yes</button>
+        <button class="button no" onclick="showQuote3()">No</button>
+      `;
+      document.querySelector('.container').style.opacity = '1';
+    }, 500);
+  }
+
+  function showQuote1() {
+    document.querySelector('.container').style.opacity = '0';
+    setTimeout(function(){
+      document.querySelector('.container').innerHTML = `
+        <p class="quote">Arey!? I've been waiting for it since 3 months for you to read it.....ab toh padh le yaarrr :(</p>
+        <p class="refresh-message">(Refresh the page to restart and this time be honest)</p>
+      `;
+      document.querySelector('.container').style.opacity = '1';
+    }, 500);
+  }
+
+  function showQuote2() {
+    document.querySelector('.container').style.opacity = '0';
+    setTimeout(function(){
+      document.querySelector('.container').innerHTML = `
+        <div class="quote-container" id="quote-container">
+          <div id="quote">
+            <p class="quote"> </p> Hey Rudranshi </p>
+Life can be rough, you know? Sometimes it feels like everything's coming at you at once. But here's the thing, I wouldn't want to face it all without you by my side.</p>
+You're more than just a best friend, you're like... well, you're the one person I can always count on, no matter what. You crack me up, you keep me real, and you're always down to just hang out, even if we're doing nothing. </p>
+Whatever life throws our way, we'll face it together. We'll celebrate the good times, pick each other up when things are tough, and maybe even have some funny stories to look back on later.  You know I'm always here to chat, whenever you need someone to talk to.</p>
+Seriously, our conversations are the best. I could literally talk to you for hours, just shooting the breeze and laughing about whatever. Even if it's just a quick chat every few days, it brightens my whole week. 
+There's something you might not even know...  Sometimes I worry that we might have a fight or something and mess things up, you know? But then I remember this message you sent me on July 13th. It might seem like nothing to you, but it means the world to me. It reminds me why our friendship is so special.</p>
+Listen, even if things ever change between us, that's okay. I'm just grateful to have you as a friend, and I'll always cherish the memories we've made.
+Seriously though, you're amazing, Rudranshi. You light up the room, you're strong and supportive, and anyone who gets to be your best friend is super lucky. </p>
+Here's to our friendship! It might only feel like 1.2 years, but it feels like I've known you since ages....... All I wanted to say is thanks for everything you gave me and this bond. I really appreciate you and will never take any of this for granted and will always put my 101% efforts to keep this bond alive in any situation! 
+Thanks!</p>
+And hey, if you ever need someone to talk to, you know where to find me.  Always happy to lend an ear, no matter what.  Just sayin'. 
+Plus, you're just hilarious. You always know how to make me laugh, even when I'm feeling down. And you're a great listener, too. I can always count on you to be there for me, no matter what.  You're one of a kind, Rudranshi. Thanks for being you. </p>
+🫶🏻🤍</p>
+         </div>
+        </div>
+      `;
+      document.querySelector('.container').style.opacity = '1';
+    }, 500);
+  }
+
+  function showQuote3() {
+    document.querySelector('.container').style.opacity = '0';
+    setTimeout(function(){
+      document.querySelector('.container').innerHTML = `
+        <p class="quote">....you disappointed me :(</p>
+        <p class="refresh-message">(Refresh the page to restart and this time be honest)</p>
+      `;
+      document.querySelector('.container').style.opacity = '1';
+    }, 500);
+  }
+  function showQuote4() {
+    document.querySelector('.container').style.opacity = '0';
+    setTimeout(function(){
+      document.querySelector('.container').innerHTML = `
+        <p class="quote">Aur kitna wait karu mai :)</p>
+        <p class="refresh-message">(Refresh the page to restart and this time be honest)</p>
+      `;
+      document.querySelector('.container').style.opacity = '1';
+    }, 500);
+  }
+</script>
+
+</body>
+</html>
